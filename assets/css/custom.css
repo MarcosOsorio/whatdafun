@@ -1,0 +1,90 @@
+/** Your theme modifications here **/
+
+
+@media screen and (max-width: 767px)
+{
+  /* Small phones screens */
+  body
+  {
+    background-size: cover;
+    background-image:url('../img/background-small.jpg');
+    background-position: center;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+
+    @keyframes animatedBackground
+    {
+      from { background-position: right center; }
+      to { background-position: left center; }
+    }
+
+    /* animation: animatedBackground 5s linear infinite; */
+
+  }
+}
+
+@media screen and (min-width: 768px)
+{
+  /* Tablet and above */
+  body
+  {
+    background-size: cover;
+    background-image:url('../img/background.jpg');
+    background-position: center;
+    background-attachment: fixed;
+    background-repeat: no repeat;
+
+    @keyframes animatedBackground
+    {
+      from { background-position: right center; }
+      to { background-position: left center; }
+    }
+
+    /* animation: animatedBackground 5s linear infinite; */
+  }
+}
+
+.size-chooser
+{
+text-align: center; 
+}
+
+.color-chooser span.colour
+{
+  display: inline-block;
+  width: 25px;
+  height: 25px;
+  border: solid 1px #dcdbdb;
+
+  margin-top: 0px;
+  margin-left: 5px;
+  border-radius: 4px;
+}
+
+.color-chooser span.colour.white{
+  background: #fff;
+}
+.color-chooser span.colour.red{
+  background: red;
+}
+.color-chooser span.colour.green{
+  background: green;
+}
+.color-chooser span.colour.blue {
+  background: blue;
+}
+.color-chooser span.colour.yellow {
+  background: yellow;
+}
+.color-chooser span.colour.gray {
+  background: gray;
+}
+.color-chooser span.colour.black {
+  background: black;
+}
+.color-chooser span.colour.purple {
+  background: purple;
+}
+.color-chooser span.colour.pink {
+  background: pink;
+}

@@ -1,0 +1,16 @@
+{
+  "uploadOnSave": true,
+  "useAtomicWrites": false,
+  "deleteLocal": false,
+  "hostname": "ftp.ipage.com",
+  "port": "21",
+  "target": "/",
+  "ignore": [
+    ".remote-sync.json",
+    ".git/**"
+  ],
+  "username": "whatdafun",
+  "watch": [],
+  "transport": "ftp",
+  "password": "12Ab34Cd56Ef78Gh!!"
+}
