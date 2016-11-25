@@ -123,12 +123,12 @@ $config = array(
                 array(
                         'field' => 'new_description',
                         'label' => 'descripción',
-                        'rules' => 'required|trim|alpha_numeric|min_length[5]',
+                        'rules' => 'required|trim|min_length[5]|regex_match[/[a-zA-Z0-9_]+( [a-zA-Z0-9_]+)*$/]',
                         'errors' =>
                         array
                         (
                             'required' => 'Debes ingresar una %s (ej. casa en valparaíso, depto en santiago).',
-                            'alpha_numeric' => 'La %s debe contener solo números y letras.',
+                            'regex_match' => 'La %s debe contener solo números y letras.',
                             'min_length' => 'La %s tener cómo mínimo 5 dígitos.'
                         )
                 ),
@@ -159,12 +159,12 @@ $config = array(
                 array(
                         'field' => 'new_address',
                         'label' => 'dirección',
-                        'rules' => 'required|trim|alpha|min_length[4]',
+                        'rules' => 'required|trim|min_length[4]|regex_match[/[a-zA-Z0-9_]+( [a-zA-Z0-9_]+)*$/]',
                         'errors' =>
                         array
                         (
                             'required' => 'Debes ingresar una %s.',
-                            'alpha' => 'La %s debe contener solo letras.',
+                            'regex_match' => 'La %s debe contener solo números y letras.',
                             'min_length' => 'La %s debe contener como mínimo 4 letras.'
                         )
                 ),

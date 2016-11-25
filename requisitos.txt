@@ -1,0 +1,35 @@
+Usuarios
+Agregar direcciones
+Editar Direcciones
+Eliminar Direcciones
+agregar productos a lista de deseos
+agregar productos a carro de compras
+comprar productos
+revisar envíos
+
+Admin
+Eliminar Usuarios
+Desactivar Usuarios
+Editar Usuarios
+
+actualizar envíos
+
+Generar Reportes de ventas
+Diseños más vendidos
+Diseñadores más vendidos
+Diseños más visitados
+Diseños más agregados a la lista de deseos
+Ingresos por periodos
+  día
+  mes
+  año
+
+
+
+Diseñadores
+Crear galerías
+Editar galerías
+Eliminar galerías
+Crear diseños
+Editar diseños
+Eliminar Diseños

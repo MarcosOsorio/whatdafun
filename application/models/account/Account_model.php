@@ -73,6 +73,46 @@ class Account_model extends CI_Model {
 
         }
 
+        public function get_account_address($acc_id, $add_id)
+        {
+          $query = $this->db->query("
+          select count(*)
+          from address
+          where acc_id = $acc_id
+          and add_id = $add_id;
+          ");
+
+          if ($query->num_rows() > 0){
+            return $query->result();
+          } else return null;
+        }
+
+        public function set_account_update_address($array)
+        {
+          // updates the address with the provided information
+          if (!$this->get_account_address($array['id'], $array['add_id']) == null)
+          {
+            $query = $this->db->query("
+            update address
+            set
+            add_description = '".$array['new_description']."',
+            add_name = '".$array['new_name']."',
+            add_surname = '".$array['new_surname']."',
+            add_address = '".$array['new_address']."',
+            add_number = ".$array['new_number'].",
+            com_id = ".$array['new_commune'].",
+            add_phone = ".$array['new_phone'].",
+            add_email = '".$array['new_email']."'
+            where add_id = ".$array['add_id'].";
+            ");
+
+            if ($this->db->affected_rows() >0)
+            return true;
+            else
+            return null;
+          }
+        }
+        
         public function set_account_update_password($email, $old_password, $new_password)
         {
 

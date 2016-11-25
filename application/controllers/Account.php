@@ -142,14 +142,19 @@ class Account extends CI_Controller {
           $this->index($this->input->post('new_selected_address'),true);
 
         } elseif ($this->Account_model->set_account_update_address(
-          $this->session->email,
-          $this->input->post('new_description'),
-          $this->input->post('new_description'),
-          $this->input->post('new_description'),
-          $this->input->post('new_description'),
-          $this->input->post('new_description'),
-          $this->input->post('new_description'),
-          $this->input->post('new_password')))
+          Array(
+          "id" => $this->session->id,
+          "add_id" => $this->input->post("new_selected_address"),
+          "new_description" => $this->input->post('new_description'),
+          "new_name" => $this->input->post('new_name'),
+          "new_surname" => $this->input->post('new_surname'),
+          "new_address" => $this->input->post('new_address'),
+          "new_number" => $this->input->post('new_number'),
+          "new_block" => $this->input->post('new_block'),
+          "new_commune" => $this->input->post('new_commune'),
+          "new_phone" => $this->input->post('new_phone'),
+          "new_email" => $this->input->post('new_email'))
+          ))
         {
           // user is redirected to account
           $this->index();
