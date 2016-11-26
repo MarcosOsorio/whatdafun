@@ -42,15 +42,34 @@ class Account extends CI_Controller {
             // load addresses of active account
             $data['addresses'] = $this->Address_model->get_addresses($this->session->id);
 
-            // load
-
             // load full address (active or selected)
             if ($address == false){
               $data['full_address'] = $this->Address_model->get_active_address($this->session->id);
             } else {
               $data['full_address'] = $this->Address_model->get_address_commune_and_region($address);
-              if (empty($data['full_address'])){
-                redirect('404');
+
+              // if address is empty, array is filled with default values
+
+              if ($this->Address_model->get_address_exists($this->session->id, $address)){
+                if (empty($data['full_address'])){
+                  $data['full_address'] = (object) array(
+                    'add_id' => $address,
+                    'acc_id' => $this->session->id,
+                    'com_id' => '0',
+                    'add_description' => '',
+                    'add_name' => '',
+                    'add_surname' => '',
+                    'add_address' => '',
+                    'add_block' => '',
+                    'reg_id' => '0',
+                    'add_number' => '',
+                    'add_phone' => '',
+                    'add_email' => '',
+                    'add_active' => '1'
+                  );
+                }
+              } else {
+                redirect('404/my404');
               }
             }
 
@@ -73,8 +92,10 @@ class Account extends CI_Controller {
           }
       }
 
-      public function address($address = false)
+      public function edit_address($address = false)
       {
+        // makes the address in the view editable
+
         $this->load->helper(array('form', 'url'));
         $this->load->library('form_validation');
 
@@ -91,21 +112,24 @@ class Account extends CI_Controller {
 
       public function activate_address()
       {
+        // sets the address selected in the view as the new active address
+
         $post_address = $this->input->post('new_active_address');
         if (isset($post_address)){
           if ($this->Address_model->set_active_address($this->session->id,$post_address)){
             $this->index();
           }
         }
-
       }
 
       public function fetch_communes($region = false)
       {
+        // loads the communes list for a given region
+
         // https://css-tricks.com/dynamic-dropdowns/
 
         $communes = $this->Address_model->get_communes_by_region($region);
-        // echo json_encode($communes);
+        // to implement echo json_encode($communes); instead of <option> tags
 
         foreach ($communes as $commune) {
           echo '<option value="'. $commune->com_id .'">'. $commune->com_name .'</option>';
@@ -114,16 +138,19 @@ class Account extends CI_Controller {
 
       public function verify_password_change()
       {
+        // validates the password change form
+
         $this->load->helper(array('form', 'url'));
         $this->load->library('form_validation');
 
         if ($this->form_validation->run('password') == FALSE)
         {
-          //$data['password_errors'] = validation_errors('<div class="alert alert-warning" role="alert">', '</div>');
-
+          // password is not updated and we call the index method
           $this->index();
 
-        } elseif ($this->Account_model->set_account_update_password($this->session->email, $this->input->post('old_password'), $this->input->post('new_password')))
+        } elseif ($this->Account_model->set_account_update_password(
+          $this->session->email, $this->input->post('old_password'),
+          $this->input->post('new_password')))
         {
           // user must make login again
           $this->password_change_success();
@@ -132,12 +159,15 @@ class Account extends CI_Controller {
 
       public function verify_address_change()
       {
+        // verifies if the address edit form is correct
+
         $this->load->helper(array('form', 'url'));
         $this->load->library('form_validation');
 
         if ($this->form_validation->run('address') == FALSE)
         {
-          //$route['account/index/(:any)/(:any)'] = 'account/index/hola/quetal';
+          // if the form is completely ok, we call the index method with
+          // the new address as a parameter
 
           $this->index($this->input->post('new_selected_address'),true);
 
@@ -156,21 +186,37 @@ class Account extends CI_Controller {
           "new_email" => $this->input->post('new_email'))
           ))
         {
-          // user is redirected to account
+          // if the insert fails user is redirected to account
           $this->index();
+        }
+      }
+
+      public function add_new_address()
+      {
+        // registers a new address for a given user
+
+        $address = $this->Address_model->set_new_address($this->session->id);
+        if (!$address){
+          // new address isn't registered and we call the index method
+          $this->index();
+        } else {
+          // new address is registered and we call the index method with the address id
+          $this->index($address, false);
         }
       }
 
       public function password_change_success()
       {
+        // loads the success page on password changed
+
+        // unsets session variables for new session on login
         $this->session->unset_userdata('name');
         $this->session->unset_userdata('id');
         $this->session->unset_userdata('mail');
         $this->session->sess_destroy();
 
-
         // data for the redirection delay
-        $data['page_logout'] = TRUE;
+        $data['page_logout'] = true;
 
         // set title
         $data['page_title'] = 'Contraseña Restablecida';
@@ -197,12 +243,14 @@ class Account extends CI_Controller {
 
       public function _password_check($str)
       {
+        // checks if the old password matches with the new written password in the password form
+
         if (!$str) {
-            return TRUE;
+            return true;
         } elseif ($this->Account_model->get_account_email_password_exists($this->session->email, $this->input->post('old_password'))) {
-            return TRUE;
+            return true;
         } else {
-            return FALSE;
+            return false;
         }
       }
 }

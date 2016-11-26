@@ -7,24 +7,6 @@ agregar productos a carro de compras
 comprar productos
 revisar envíos
 
-Admin
-Eliminar Usuarios
-Desactivar Usuarios
-Editar Usuarios
-
-actualizar envíos
-
-Generar Reportes de ventas
-Diseños más vendidos
-Diseñadores más vendidos
-Diseños más visitados
-Diseños más agregados a la lista de deseos
-Ingresos por periodos
-  día
-  mes
-  año
-
-
 
 Diseñadores
 Crear galerías
@@ -33,3 +15,44 @@ Eliminar galerías
 Crear diseños
 Editar diseños
 Eliminar Diseños
+Revisar ingresos
+Subir Diseño
+
+Home
+Mostrar diseños más gustados
+Mostrar diseños más comprados
+Mostrar diseños de una galería
+Mostrar galerías de un diseñador
+Mostrar colecciones por tema
+Mostrar colecciones por genero
+
+Diseño
+Mostrar detalle de diseño
+
+Admin
+Eliminar Usuarios
+Desactivar Usuarios
+Editar Usuarios
+actualizar estado de envíos
+Aprobar/desaprobar diseño de Diseñador
+Generar Reportes de ventas
+	Diseños más vendidos
+	Diseñadores más vendidos
+	Diseños más visitados
+	Diseños más agregados a la lista de deseos
+	Ingresos por periodos
+  		día
+  		mes
+  		año
+
+	escoger color
+	escoger talla
+	escoger tipo de prenda
+
+Carro
+Escoger dirección
+Escoger medio de pago
+Escoger método de envío
+
+Login
+Registro

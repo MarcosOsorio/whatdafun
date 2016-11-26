@@ -11,6 +11,8 @@ class Address_model extends CI_Model {
 
         public function get_regions()
         {
+          // returns all regions
+
           $query = $this->db->query("
           select
           reg_id,
@@ -43,7 +45,7 @@ class Address_model extends CI_Model {
 
         public function get_communes_by_region($reg_id)
         {
-          // Returns all communes
+          // Returns all communes for a given region
 
           $query = $this->db->query("
           select
@@ -57,6 +59,24 @@ class Address_model extends CI_Model {
           if ($query->num_rows() > 0){
             return $query->result();
           } else return 0;
+        }
+
+        public function get_address_exists($acc_id, $add_id)
+        {
+          // returns true if the address exists for a given user id
+
+          $query = $this->db->query("
+          select
+          acc_id, add_id
+          from address
+          where acc_id = $acc_id and add_id = $add_id;
+          ");
+
+          if ($query->num_rows() > 0){
+            return true;
+          } else {
+            return false;
+          }
         }
 
         public function get_addresses($acc_id)
@@ -73,7 +93,9 @@ class Address_model extends CI_Model {
 
           if ($query->num_rows() > 0){
             return $query->result();
-          }else return 0;
+          }else {
+            return null;
+          }
         }
 
         public function get_address_commune_and_region($add_id)
@@ -95,9 +117,8 @@ class Address_model extends CI_Model {
           ");
 
           if ($query->num_rows() > 0){
-            //print_r($query->row());
             return $query->row();
-          } else return 0;
+          } else return null;
         }
 
         public function get_active_address($acc_id)
@@ -112,7 +133,40 @@ class Address_model extends CI_Model {
                 return $this->get_address_commune_and_region($address->add_id);
               }
             }
-          } else return 0;
+          } else return null;
+        }
+
+        public function set_new_address($acc_id)
+        {
+          // add new address with default values for editing later
+
+          $this->db->trans_start();
+          $this->db->query("
+          insert into address
+          values
+          (null, $acc_id, 1 , 'nueva dirección', null, null, null, null, null, null, null, 0 );
+          ");
+
+          $add_id = $this->db->insert_id();
+
+          $this->db->query("
+          update address
+          set add_active = 0
+          where acc_id = $acc_id;
+          ");
+          $this->db->query("
+          update address
+          set add_active = 1
+          where acc_id = $acc_id and add_id = $add_id
+          ;");
+          $this->db->trans_complete();
+
+          if ($this->db->trans_status() === FALSE)
+          {
+            return false;
+          }else {
+            return $add_id;
+          }
         }
 
         public function set_active_address($acc_id, $add_id)
@@ -138,12 +192,10 @@ class Address_model extends CI_Model {
 
           if ($this->db->trans_status() === FALSE)
           {
-              echo 'no se pudo actualizar la dirección';
               return 0;
           }else {
             return 1;
           }
         }
 }
-
 ?>

@@ -10,10 +10,13 @@ class Account_model extends CI_Model {
 
         public function set_account($email, $first_name, $father_surname, $password )
         {
-          // queries in MiXeD CaSe don't work on UNIX system
+          // inserts a new account with the basic given data
 
-          if ($this->get_account_email_exists($email))
+          if ($this->get_account_email_exists($email)){
+            // if email is already registered we exit
             return false;
+          }
+            // storing of password with hash encryption
 
             $password_hash = password_hash($password, PASSWORD_DEFAULT);
 
@@ -112,7 +115,7 @@ class Account_model extends CI_Model {
             return null;
           }
         }
-        
+
         public function set_account_update_password($email, $old_password, $new_password)
         {
 
