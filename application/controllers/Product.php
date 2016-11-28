@@ -1,36 +1,140 @@
 <?php
 class Product extends CI_Controller {
 
-        public function index()
+        public function __construct()
         {
-                // load the account model to query for the user
-                $this->load->model('product/Product_model');
+          parent::__construct();
+          $this->load->model('account/Account_model');
+          $this->load->model('product/Product_model');
+        }
 
-                // set title
-                $data['page_title'] = 'WhatDaFun! - Productos';
+        public function index($pro_id = false)
+        {
+          // gets the id of the product to display
+          if (!$pro_id == false){
+            // if the id is given, then detail function is loaded
+            $this->detail($pro_id);
+          } else {
+            // if id isn't gived, user is redirected to 404
+            redirect('404/my404');
+          }
 
-                //load head
-                $data['page_head'] = $this->load->view('modules/head', $data, TRUE);
+        }
 
-                // data for the navbar
-                $data['navbar_name'] = $this->Account_model->get_account_first_name(1);
-                $data['navbar_mail'] = $this->Account_model->get_account_mail(1);
+        public function detail($pro_id = false, $thumb_type = 'tshirt', $thumb_size = 'front', $thumb_gender = 'male', $thumb_color = 'white')
+        {
+          // gets the id of the product to display
+          if (!$pro_id == false and $this->session->name){
 
-                // load the navbar with $data in $data['page_navbar']
-                $data['page_navbar'] = $this->load->view('modules/navbar', $data, TRUE);
+            // data for the navbar
+            $data['navbar_name'] = $this->session->name;
 
-                // load breadcrumb
-                $data['breadcrumb_address'] = 'Registro';
-                $data['page_breadcrumb'] = $this->load->view('modules/breadcrumb', $data, TRUE);
+            // load the navbar with $data in $data['page_navbar']
+            $data['page_navbar'] = $this->load->view('modules/navbar', $data, TRUE);
 
-                //load footer
-                $data['page_footer'] = $this->load->view('modules/footer', NULL, TRUE);
+            // set title
+            $data['page_title'] = 'Tres Corazones - Cerati';
 
-                //load scripts
-                $data['page_scripts'] = $this->load->view('modules/scripts', NULL, TRUE);
+            //load head
+            $data['page_head'] = $this->load->view('modules/head', $data, TRUE);
 
-                // load the register view with all the other modules
-                $this->load->view('register/register_view', $data);
+            // load product id
+            $data['product_id'] = $pro_id;
+
+            // load breadcrumb
+            $data['breadcrumb_address'] = 'Tres Corazones';
+            $data['page_breadcrumb'] = $this->load->view('modules/breadcrumb', $data, TRUE);
+
+            // set size for thumbnails
+            $data['thumb_size'] = $thumb_size;
+
+            // set the default gender for the thumbnails
+            $data['thumb_gender'] = $thumb_gender;
+
+            // set the thumbnail type (tshirt, tanktop, etc.)
+            $data['thumb_type'] = $thumb_type;
+
+            // set colours array for thumbnails array
+            $colours = (object) array(
+              (object) array('colour' => 'white'),
+              (object) array('colour' => 'black'),
+              (object) array('colour' => 'gray'),
+              (object) array('colour' => 'red')
+            );
+
+            $data['thumbnails'] = array();
+
+            // set the default color for the thumbnail
+            $data['thumb_colour'] = '';
+
+            // foreach loop for fill the data['thumbnails'] array
+            foreach ($colours as $colour) {
+
+                  // set selected value for the colour sent in the form
+
+                  switch ($thumb_size) {
+                    case 'full':
+                            if ($colour->colour == $thumb_color){
+                              $item = (object) array(
+                                'colour' => $colour->colour,
+                                'file' => 'assets/img/item/'. $pro_id.'/'.$pro_id.'_'.$thumb_type.'_'.$thumb_size.'_'.$colour->colour.'.jpg',
+                                'selected' => 1
+                                );
+
+                                $data['thumb_colour'] = $item;
+
+                            } else {
+                              $item = (object) array(
+                                'colour' => $colour->colour,
+                                'file' => 'assets/img/item/'. $pro_id.'/'.$pro_id.'_'.$thumb_type.'_'.$thumb_size.'_'.$colour->colour.'.jpg',
+                                'selected' => 0
+                                );
+                            }
+                      break;
+                    case 'front':
+                            if ($colour->colour == $thumb_color){
+                              $item = (object) array(
+                                'colour' => $colour->colour,
+                                'file' => 'assets/img/item/'. $pro_id.'/'.$pro_id.'_'.$thumb_type.'_'.$thumb_size.'_'.$thumb_gender.'_'.$colour->colour.'.jpg',
+                                'selected' => 1
+                                );
+
+                                $data['thumb_colour'] = $item;
+
+                            } else {
+                              $item = (object) array(
+                                'colour' => $colour->colour,
+                                'file' => 'assets/img/item/'. $pro_id.'/'.$pro_id.'_'.$thumb_type.'_'.$thumb_size.'_'.$thumb_gender.'_'.$colour->colour.'.jpg',
+                                'selected' => 0
+                                );
+                            }
+                      break;
+
+                    default:
+                      # code...
+                      break;
+                  }
+
+
+                  array_push($data['thumbnails'],$item);
+            }
+
+            //load footer
+            $data['page_footer'] = $this->load->view('modules/footer', NULL, TRUE);
+
+            //load scripts
+            $data['page_scripts'] = $this->load->view('modules/scripts', NULL, TRUE);
+
+            // load the register view with all the other modules
+            // $this->load->view('product/test_view', $data);
+            $this->load->view('product/detail_view', $data);
+
+          } else {
+            // if id isn't gived, user is redirected to 404
+            redirect('404/my404');
+          }
+
+
 
         }
 }

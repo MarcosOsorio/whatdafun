@@ -101,11 +101,11 @@
 
                                               </div>
                                           </div>
-                                          <a href="detail.html" class="invisible">
-                                              <img src="assets/img/product1.jpg" alt="" class="img-responsive">
+                                          <a href="product/detail/<?php echo $design->des_id;?>">
+                                              <img src="<?php echo $design->des_file;?>" alt="" class="img-responsive">
                                           </a>
                                           <div class="text">
-                                              <h3><a href="designer/gallery/<?php echo $design->des_id;?>"><?php echo $design->des_name;?></a></h3>
+                                              <h3><a href="product/gallery/<?php echo $design->des_id;?>"><?php echo $design->des_name;?></a></h3>
                                               <p class="buttons">
                                                   <a href="designer/edit_gallery" class="btn btn-default"><i class="fa fa-edit"></i>Editar</a>
                                                   <a href="designer/delete_gallery" class="btn btn-default"><i class="fa fa-trash-o"></i>Eliminar</a>

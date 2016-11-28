@@ -38,7 +38,7 @@ _________________________________________________________ -->
                     <h4 class="modal-title" id="Login">Login Friki</h4>
                 </div>
                 <div class="modal-body">
-                    <form action="login.php" method="post">
+                    <form action="login" method="post">
                         <div class="form-group">
                             <input type="text" class="form-control" name="email" id="email-modal" placeholder="email">
                         </div>
@@ -53,7 +53,7 @@ _________________________________________________________ -->
                     </form>
 
                     <p class="text-center text-muted">Aún no eres uno de los nuestros?</p>
-                    <p class="text-center text-muted"><a href="register.php"><strong>Regístrate Ahora</strong></a>! Es sencillo . En unos minutos tendrás acceso a miles de diseños hechos para ti!</p>
+                    <p class="text-center text-muted"><a href="register"><strong>Regístrate Ahora</strong></a>! Es sencillo . En unos minutos tendrás acceso a miles de diseños hechos para ti!</p>
 
                 </div>
             </div>
@@ -84,7 +84,7 @@ _________________________________________________________ -->
                     <span class="sr-only">Toggle search</span>
                     <i class="fa fa-search"></i>
                 </button>
-                <a class="btn btn-default navbar-toggle" href="basket.php">
+                <a class="btn btn-default navbar-toggle" href="basket">
                     <i class="fa fa-shopping-cart"></i>  <span class="hidden-xs">3 ítems en carro</span>
                 </a>
             </div>
@@ -94,7 +94,7 @@ _________________________________________________________ -->
         <div class="navbar-collapse collapse" id="navigation">
 
             <ul class="nav navbar-nav navbar-left">
-                <li class="active"><a href="index.php">Inicio</a>
+                <li class="active"><a href="home">Inicio</a>
                 </li>
 
                 <li class="dropdown yamm-fw">
@@ -106,48 +106,48 @@ _________________________________________________________ -->
                                     <div class="col-sm-3">
                                         <h5>Más Comprados</h5>
                                         <ul>
-                                            <li><a href="category.php">Poleras</a>
+                                            <li><a href="category">Poleras</a>
                                             </li>
-                                            <li><a href="category.php">Polerones</a>
+                                            <li><a href="category">Polerones</a>
                                             </li>
-                                            <li><a href="category.php">Accesorios</a>
+                                            <li><a href="category">Accesorios</a>
                                             </li>
                                         </ul>
                                     </div>
                                     <div class="col-sm-3">
                                         <h5>Más Votados</h5>
                                         <ul>
-                                            <li><a href="category.php">Poleras</a>
+                                            <li><a href="category">Poleras</a>
                                             </li>
-                                            <li><a href="category.php">Polerones</a>
+                                            <li><a href="category">Polerones</a>
                                             </li>
-                                            <li><a href="category.php">Accesorios</a>
+                                            <li><a href="category">Accesorios</a>
                                             </li>
                                         </ul>
                                     </div>
                                     <div class="col-sm-3">
                                         <h5>Accessories</h5>
                                         <ul>
-                                            <li><a href="category.php">Trainers</a>
+                                            <li><a href="category">Trainers</a>
                                             </li>
-                                            <li><a href="category.php">Sandals</a>
+                                            <li><a href="category">Sandals</a>
                                             </li>
-                                            <li><a href="category.php">Hiking shoes</a>
+                                            <li><a href="category">Hiking shoes</a>
                                             </li>
-                                            <li><a href="category.php">Casual</a>
+                                            <li><a href="category">Casual</a>
                                             </li>
-                                            <li><a href="category.php">Hiking shoes</a>
+                                            <li><a href="category">Hiking shoes</a>
                                             </li>
-                                            <li><a href="category.php">Casual</a>
+                                            <li><a href="category">Casual</a>
                                             </li>
                                         </ul>
                                         <h5>Looks and trends</h5>
                                         <ul>
-                                            <li><a href="category.php">Trainers</a>
+                                            <li><a href="category">Trainers</a>
                                             </li>
-                                            <li><a href="category.php">Sandals</a>
+                                            <li><a href="category">Sandals</a>
                                             </li>
-                                            <li><a href="category.php">Hiking shoes</a>
+                                            <li><a href="category">Hiking shoes</a>
                                             </li>
                                         </ul>
                                     </div>
@@ -179,52 +179,52 @@ _________________________________________________________ -->
                                     <div class="col-sm-3">
                                         <h5>Clothing</h5>
                                         <ul>
-                                            <li><a href="category.php">T-shirts</a>
+                                            <li><a href="category">T-shirts</a>
                                             </li>
-                                            <li><a href="category.php">Shirts</a>
+                                            <li><a href="category">Shirts</a>
                                             </li>
-                                            <li><a href="category.php">Pants</a>
+                                            <li><a href="category">Pants</a>
                                             </li>
-                                            <li><a href="category.php">Accessories</a>
+                                            <li><a href="category">Accessories</a>
                                             </li>
                                         </ul>
                                     </div>
                                     <div class="col-sm-3">
                                         <h5>Shoes</h5>
                                         <ul>
-                                            <li><a href="category.php">Trainers</a>
+                                            <li><a href="category">Trainers</a>
                                             </li>
-                                            <li><a href="category.php">Sandals</a>
+                                            <li><a href="category">Sandals</a>
                                             </li>
-                                            <li><a href="category.php">Hiking shoes</a>
+                                            <li><a href="category">Hiking shoes</a>
                                             </li>
-                                            <li><a href="category.php">Casual</a>
+                                            <li><a href="category">Casual</a>
                                             </li>
                                         </ul>
                                     </div>
                                     <div class="col-sm-3">
                                         <h5>Accessories</h5>
                                         <ul>
-                                            <li><a href="category.php">Trainers</a>
+                                            <li><a href="category">Trainers</a>
                                             </li>
-                                            <li><a href="category.php">Sandals</a>
+                                            <li><a href="category">Sandals</a>
                                             </li>
-                                            <li><a href="category.php">Hiking shoes</a>
+                                            <li><a href="category">Hiking shoes</a>
                                             </li>
-                                            <li><a href="category.php">Casual</a>
+                                            <li><a href="category">Casual</a>
                                             </li>
-                                            <li><a href="category.php">Hiking shoes</a>
+                                            <li><a href="category">Hiking shoes</a>
                                             </li>
-                                            <li><a href="category.php">Casual</a>
+                                            <li><a href="category">Casual</a>
                                             </li>
                                         </ul>
                                         <h5>Looks and trends</h5>
                                         <ul>
-                                            <li><a href="category.php">Trainers</a>
+                                            <li><a href="category">Trainers</a>
                                             </li>
-                                            <li><a href="category.php">Sandals</a>
+                                            <li><a href="category">Sandals</a>
                                             </li>
-                                            <li><a href="category.php">Hiking shoes</a>
+                                            <li><a href="category">Hiking shoes</a>
                                             </li>
                                         </ul>
                                     </div>
@@ -247,7 +247,7 @@ _________________________________________________________ -->
                     </ul>
                 </li>
 
-                <li><a href="faq.php">F.A.Q</a>
+                <li><a href="faq">F.A.Q</a>
                 </li>
                     </ul>
                 </li>
@@ -259,7 +259,7 @@ _________________________________________________________ -->
         <div class="navbar-buttons">
 
             <div class="navbar-collapse collapse right" id="basket-overview">
-                <a href="basket.php" class="btn btn-primary navbar-btn"><i class="fa fa-shopping-cart"></i><span class="hidden-sm">3 items en carro</span></a>
+                <a href="basket" class="btn btn-primary navbar-btn"><i class="fa fa-shopping-cart"></i><span class="hidden-sm">3 items en carro</span></a>
             </div>
             <!--/.nav-collapse -->
 

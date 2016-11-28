@@ -407,7 +407,7 @@ values
 
 insert into design
 values
-(null, 1, 'gracias totales', null, null),
+(null, 1, 'gracias totales', null, 'assets/img/item/1b.jpg'),
 (null, 1, 'zeta bosio', null, null),
 (null, 1, 'cecilia amenabar', null, null),
 (null, 1, 'gracias totales', null, null),

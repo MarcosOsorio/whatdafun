@@ -9,3 +9,4 @@ _________________________________________________________ -->
 <script src="assets/js/owl.carousel.min.js"></script>
 <script src="assets/js/front.js"></script>
 <script src="assets/js/form-address.js"></script>
+<script src="assets/js/product-view.js"></script>

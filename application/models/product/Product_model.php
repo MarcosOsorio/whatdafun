@@ -85,7 +85,8 @@ class Product_model extends CI_Model {
             des_id,
             gal_id,
             des_name,
-            des_date
+            des_date,
+            des_file
             from design where gal_id = $gal_id
             limit 6 offset $offset;
             ");
@@ -97,6 +98,26 @@ class Product_model extends CI_Model {
             }
           }
 
+        }
+
+        public function get_design($des_id)
+        {
+          // returns the information of a design
+
+          $query = $this->db->query("
+          select
+          des_id,
+          des_name,
+          des_file
+          from design
+          where des_id = $des_id;
+          ");
+
+          if ($query->num_rows() > 0){
+            return $query->row();
+          } else {
+            return null;
+          }
         }
 
         public function get_designs_count($acc_id, $gal_id)
