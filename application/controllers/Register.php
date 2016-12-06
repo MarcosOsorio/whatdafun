@@ -6,35 +6,49 @@ class Register extends CI_Controller {
         {
           parent::__construct();
           $this->load->model('account/Account_model');
+          $this->load->model('product/Product_model');
         }
 
         public function index()
         {
+                  if ($this->session->id){
+                    // data for the cart
+                    $cart_count = $this->Product_model->get_cart_items_count($this->session->id);
 
-                // data for the navbar
-                $data['navbar_name'] = $this->session->first_name;
+                    $data['cart_count'] = "";
+                    if (isset($cart_count)){
+                      $data['cart_count'] = $cart_count->car_count;
+                    } else {
+                      $data['cart_count'] = 0;
+                    }
+                  } else {
+                    $data['cart_count'] = 0;
+                  }
 
-                // load the navbar with $data in $data['page_navbar']
-                $data['page_navbar'] = $this->load->view('modules/navbar', $data, TRUE);
+                  // data for the navbar
+                  $data['navbar_name'] = $this->session->first_name;
 
-                // set title
-                $data['page_title'] = 'WhatDaFun! - Registro';
+                  // load the navbar with $data in $data['page_navbar']
+                  $data['page_navbar'] = $this->load->view('modules/navbar', $data, TRUE);
 
-                //load head
-                $data['page_head'] = $this->load->view('modules/head', $data, TRUE);
+                  // set title
+                  $data['page_title'] = 'WhatDaFun! - Registro';
 
-                // load breadcrumb
-                $data['breadcrumb_address'] = 'Registro';
-                $data['page_breadcrumb'] = $this->load->view('modules/breadcrumb', $data, TRUE);
+                  //load head
+                  $data['page_head'] = $this->load->view('modules/head', $data, TRUE);
 
-                //load footer
-                $data['page_footer'] = $this->load->view('modules/footer', NULL, TRUE);
+                  // load breadcrumb
+                  $data['breadcrumb_address'] = 'Registro';
+                  $data['page_breadcrumb'] = $this->load->view('modules/breadcrumb', $data, TRUE);
 
-                //load scripts
-                $data['page_scripts'] = $this->load->view('modules/scripts', NULL, TRUE);
+                  //load footer
+                  $data['page_footer'] = $this->load->view('modules/footer', NULL, TRUE);
 
-                // load the register view with all the other modules
-                $this->load->view('register/register_view', $data);
+                  //load scripts
+                  $data['page_scripts'] = $this->load->view('modules/scripts', NULL, TRUE);
+
+                  // load the register view with all the other modules
+                  $this->load->view('register/register_view', $data);
 
         }
 

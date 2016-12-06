@@ -1,50 +1,13 @@
 <?php echo $page_head; ?>
-
 <body>
-
   <?php echo $page_navbar; ?>
-
   <div id="all">
-
       <div id="content">
           <div class="container">
-
               <div class="col-md-12">
-
                   <?php echo $page_breadcrumb; ?>
-
-              <div class="col-md-3">
-                  <!-- *** CUSTOMER MENU ***
-  _________________________________________________________ -->
-                  <div class="panel panel-default sidebar-menu">
-
-                      <div class="panel-heading">
-                          <h3 class="panel-title">Sección de Clientes</h3>
-                      </div>
-
-                      <div class="panel-body">
-
-                          <ul class="nav nav-pills nav-stacked">
-                              <li class="active">
-                                  <a href="order"><i class="fa fa-list"></i> Mis Compras</a>
-                              </li>
-                              <li>
-                                  <a href="wish"><i class="fa fa-heart"></i> Mi Lista de Deseos</a>
-                              </li>
-                              <li>
-                                  <a href="account"><i class="fa fa-user"></i> Mi Cuenta</a>
-                              </li>
-                              <li>
-                                  <a href="logout"><i class="fa fa-sign-out"></i> Salir</a>
-                              </li>
-                          </ul>
-                      </div>
-
-                  </div>
-                  <!-- /.col-md-3 -->
-
-                  <!-- *** CUSTOMER MENU END *** -->
               </div>
+              <?php echo $page_customer_menu;?>
 
               <div class="col-md-9">
                   <div class="box">
@@ -108,17 +71,12 @@
                             </div>
                           </div>
                           <!-- /.row -->
-                      </form>
+                      <?php echo form_close();?>
 
                       <hr>
-
                       <h3>Dirección de envío</h3>
 
                       <!-- Stored addresses select form -->
-
-
-                        <!-- Revisa allá arriba-->
-
 
                       <div class="row">
 
@@ -266,11 +224,6 @@
                               <?php endif;?>
                       <?php endif;?>
 
-
-
-
-
-
                     <?php if (isset($full_address)):?>
 
                               <?php echo form_open('account/verify_address_change'); ?>
@@ -406,22 +359,13 @@
 
                   </div>
               </div>
-
             </div>
             <!-- /.container -->
         </div>
         <!-- /#content -->
-
-
         <?php echo $page_footer; ?>
-
-
-
     </div>
     <!-- /#all -->
-
     <?php echo $page_scripts; ?>
-
 </body>
-
 </html>

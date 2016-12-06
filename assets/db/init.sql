@@ -379,49 +379,106 @@ values
 (NULL, 15, "Padre Hurtado"),
 (NULL, 15, "Peñaflor");
 
-insert into address
+
+insert into color(
+  col_id, col_name, col_hex
+)
+values
+(null, 'white', 'ffffff'),
+(null, 'red', 'ff0000'),
+(null, 'black', '000000'),
+(null, 'gray', '808080'),
+(null, 'yellow', 'ffff00')
+;
+
+insert into carrier(
+  car_id, car_name
+)
+values
+(null, 'Correos de Chile'),
+(null, 'Chilexpress'),
+(null, 'Tur Bus Cargo')
+;
+
+insert into account(
+  acc_id, acc_email, acc_password, acc_rut, acc_country,
+  acc_first_name, acc_second_name,
+  acc_father_surname, acc_mother_surname,
+  acc_designer_nickname, acc_birth_date, acc_register_date, acc_admin, acc_active
+) values
+(null, 'marcos.osorio.20@gmail.com', '123456789', null, null, 'marcos', 'antonio', 'osorio', 'villalobos', 'aureus', '2011-06-01', '2011-06-01', '1', '1'),
+(null, 'zorritoralfox@gmail.com', '123456789', null, null, 'raul', 'eduardo', 'mardones', 'villalobos', null, '2000-05-07', '2000-05-07', '0', '1'),
+(null, 'diegodoy@gmail.com', '123456789', null, null, 'diego', 'eduardo', 'godoy', 'carrasco', 'inertstrokes', '2013-10-01', '2013-10-01', '0', '1'),
+(null, 'holaquetal@gmail.com', '123456789', null, null, 'josé', 'eduardo', 'osorio', 'carrasco', 'maniqui', '2015-10-05', '2015-10-05', '0', '0'),
+(null, 'findelmundo@gmail.com', '123456789', null, null, 'camilo', 'eduardo', 'godoy', 'carrasco', null, '2011-10-05', '2011-10-05', '0', '0'),
+(null, 'marciano@gmail.com', '123456789', null, null, 'pedro', 'eduardo', 'godoy', 'carrasco', 'luzblanca', '2009-06-05', '2009-06-05', '0', '1'),
+(null, 'nibiru@gmail.com', '123456789', null, null, 'luis', 'eduardo', 'godoy', 'ossa', 'comidagratis', '2013-05-01', '2013-05-01', '0', '1'),
+(null, 'lascosasdelavida@gmail.com', '123456789', null, null, 'patricio', 'eduardo', 'galdamez', 'carrasco', null, '2010-05-01', '2010-05-01', '0', '1'),
+(null, 'lagartodelamuerte@gmail.com', '123456789', null, null, 'vladimir', 'adrián', 'alarcón', 'reyes', 'asthakron', '2015-08-01', '2015-08-01', '0', '1')
+;
+
+insert into address(
+  add_id,       acc_id,     com_id,     add_description,  add_name,   add_surname,
+  add_address,  add_block,  add_number, add_phone,        add_email,  add_active)
 values
 (null, 1, 12 , 'casa en la playa', 'marcos', 'osorio', 'rio la playa', null, 789, '57105564', 'marcos@gmail.com', 1 ),
-(null, 1, 14 , 'casa en el norte', 'marcos', 'osorio', 'rio la playa', null, 789, '1123233312', 'marcos@gmail.com', 0 ),
-(null, 1,  20, 'casa en requinoa', 'marcos', 'osorio', 'rio la playa', null, 789, '4564566', 'marcos@gmail.com', 0 ),
-(null, 1, 200 , 'casa en el monte', 'marcos', 'osorio', 'rio la playa', null, 789, '78989889', 'marcos@gmail.com', 0 ),
-(null, 1, 320, 'casa en san diego', 'marcos', 'osorio', 'rio la playa', null, 789, '5455654', 'marcos@gmail.com', 0 ),
-(null, 2, 12 , 'casa en la playa', 'marcos', 'osorio', 'rio la playa', null, 789, '57105564', 'marcos@gmail.com', 1 ),
-(null, 2, 14 , 'casa en el norte', 'marcos', 'osorio', 'rio la playa', null, 789, '1123233312', 'marcos@gmail.com', 0 ),
-(null, 2,  20, 'casa en requinoa', 'marcos', 'osorio', 'rio la playa', null, 789, '4564566', 'marcos@gmail.com', 0 ),
-(null, 2, 200 , 'casa en el monte', 'marcos', 'osorio', 'rio la playa', null, 789, '78989889', 'marcos@gmail.com', 0 ),
-(null, 2, 320, 'casa en san diego', 'marcos', 'osorio', 'rio la playa', null, 789, '5455654', 'marcos@gmail.com', 0 );
+(null, 3, 14 , 'casa de mamá', 'diego', 'godoy', 'rio los paltos', null, 152, '56447786', 'diegodoy@gmail.com', 1 )
+;
 
-insert into gallery
+insert into gallery(
+  gal_id,       acc_id,     gal_name,   gal_date)
 values
-(null, 1, 'cerati', null),
-(null, 1, 'pokemon', null),
-(null, 1, 'educación', null),
-(null, 1, 'digimon', null),
-(null, 2, 'comida', null),
-(null, 2, 'shinshan', null),
-(null, 2, 'dragonball', null),
-(null, 2, 'supercampeones', null),
-(null, 2, 'ash ketchum', null);
+(null, 1, 'Zelda', '2010-05-12'),
+(null, 3, 'Pokemon', '2011-04-03'),
+(null, 6, 'DragonBall', '2016-05-04'),
+(null, 3, 'Naru Cosas', '2015-03-06'),
+(null, 6, 'Super', '2016-09-08'),
+(null, 1, 'Star Crash', '2016-11-04')
+;
 
 
-insert into design
+insert into design(
+  des_id,       gal_id,        col_id,     des_name,      des_date,
+  des_price,    des_discount_percentage,   des_approved
+)
 values
-(null, 1, 'gracias totales', null, 'assets/img/item/1b.jpg'),
-(null, 1, 'zeta bosio', null, null),
-(null, 1, 'cecilia amenabar', null, null),
-(null, 1, 'gracias totales', null, null),
-(null, 1, 'zeta bosio', null, null),
-(null, 1, 'cecilia amenabar', null, null),
-(null, 1, 'gracias totales', null, null),
-(null, 1, 'zeta bosio', null, null),
-(null, 1, 'cecilia amenabar', null, null),
-(null, 1, 'gracias totales', null, null),
-(null, 1, 'zeta bosio', null, null),
-(null, 1, 'cecilia amenabar', null, null),
-(null, 1, 'gracias totales', null, null),
-(null, 1, 'zeta bosio', null, null),
-(null, 1, 'cecilia amenabar', null, null),
-(null, 2, 'gracias totales', null, null),
-(null, 3, 'zeta bosio', null, null),
-(null, 4, 'cecilia amenabar', null, null);
+(null, 1, 1, 'Skyward Sword', '2011-06-01', 12000, 10, 1),
+(null, 1, 2, 'Ocarina of Time', '2012-08-01', 12000, 20, 1),
+(null, 1, 3, 'WindWaker', '2013-10-01', 12000, 0, 1),
+(null, 2, 4, 'AeroDactyl', '2014-09-05', 12000, 0, 1),
+(null, 2, 2, 'MegaGengar', '2015-10-05', 12000, 0, 1),
+(null, 2, 5, 'PikaPika', '2016-10-05', 12000, 5, 1),
+(null, 2, 3, 'Charizard', '2011-10-05', 12000, 0, 1),
+(null, 2, 5, 'Old Pika', '2010-05-05', 12000, 5, 1),
+(null, 2, 2, 'RayQuaza', '2009-06-05', 12000, 0, 1),
+(null, 3, 2, 'Goku 3', '2012-01-01', 12000, 20, 1),
+(null, 3, 5, 'Goku GT', '2013-05-01', 12000, 20, 1),
+(null, 3, 1, 'Goku Chibi 3', '2014-04-01', 12000, 5, 1),
+(null, 3, 2, 'Vegeta Chibi S', '2015-06-01', 12000, 5, 1),
+(null, 4, 1, 'Naru Ramen', '2016-07-01', 12000, 3, 1),
+(null, 4, 2, 'Naru Fiery', '2008-04-01', 12000, 3, 1),
+(null, 4, 5, 'Naru Kawaii', '2009-04-01', 12000, 3, 1),
+(null, 5, 3, 'Bad Man', '2010-05-01', 12000, 5, 1),
+(null, 5, 4, 'Bati Sight', '2011-05-01', 12000, 2, 1),
+(null, 5, 5, 'Supa Man', '2012-06-01', 12000, 20, 1),
+(null, 6, 2, 'Ball', '2013-06-01', 12000, 5, 1),
+(null, 6, 1, 'Ship', '2014-01-03', 12000, 20, 1),
+(null, 6, 4, 'Obey!', '2015-08-01', 12000, 7, 1)
+
+;
+
+insert into purchase (
+  pur_id, acc_id, pur_date, pur_shipping_price, pur_status
+)
+values
+(null, 1, null, 2500, 0)
+;
+
+
+insert into product (
+  pro_id, des_id, pur_id, col_id, pro_name, pro_price, pro_quantity, pro_gender, pro_size
+)
+values
+(null, 1, 1, 1, 'Skyward Sword', 10000, 1, 1, 'xl'),
+(null, 2, 1, 2, 'Ocarina of Time', 11000, 1, 2, 'm')
+;

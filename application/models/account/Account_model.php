@@ -8,6 +8,13 @@ class Account_model extends CI_Model {
                 parent::__construct();
         }
 
+        public function _server()
+        {
+          // return 'production' - 'development'
+          // remove return true on get_account_email_password_exists
+          return 'development';
+        }
+
         public function set_account($email, $first_name, $father_surname, $password )
         {
           // inserts a new account with the basic given data
@@ -18,7 +25,17 @@ class Account_model extends CI_Model {
           }
             // storing of password with hash encryption
 
-            $password_hash = password_hash($password, PASSWORD_DEFAULT);
+            $server = $this->_server();
+            $password_hash = "";
+
+            switch ($server) {
+              case 'development':
+                $password_hash = $password;
+                break;
+              case 'production':
+                $password_hash = password_hash($password, PASSWORD_DEFAULT);
+                break;
+            }
 
             if ($father_surname){
 
@@ -40,6 +57,7 @@ class Account_model extends CI_Model {
                 null,
                 null,
                 '',
+                null,
                 null
               );"
               );
@@ -123,7 +141,17 @@ class Account_model extends CI_Model {
           if (!$this->get_account_email_password_exists($email, $old_password))
             return false;
 
-            $new_password = password_hash($new_password, PASSWORD_DEFAULT);
+            $server = $this->_server();
+            $new_password = "";
+            switch ($server) {
+              case 'development':
+                $new_password = $password;
+                break;
+              case 'production':
+                $new_password = password_hash($password, PASSWORD_DEFAULT);
+                break;
+            }
+
 
             $query = $this->db->query("
             update account
@@ -136,6 +164,48 @@ class Account_model extends CI_Model {
             return false;
 
         }
+
+        public function get_account_designer_nickname($acc_id)
+        {
+          // returns the designer nickname for the given account id
+
+          $exists = $this->get_account_id_exists($acc_id);
+
+          if (isset($exists)){
+            $query = $this->db->query("
+            select
+            acc_designer_nickname
+            from account
+            where acc_id = $acc_id;
+            ");
+            if ($query->num_rows() >0){
+              return $query->row();
+            } else {
+              return null;
+            }
+          } else {
+            return null;
+          }
+        }
+
+        public function get_account_id_exists($acc_id)
+        {
+          // checks if the given account id exists in the database
+
+          $query = $this->db->query("
+          select
+          acc_id
+          from account
+          where acc_id = $acc_id;
+          ");
+
+          if ($query->num_rows() >0){
+            return $query->row();
+          } else {
+            return null;
+          }
+        }
+
         public function get_account_session_data($email, $password)
         {
           // queries in MiXeD CaSe don't work on UNIX system
@@ -198,6 +268,9 @@ class Account_model extends CI_Model {
 
                   // storing the hashed password for comparing
                   $hashedPassword = $query->row()->acc_password;
+
+                  // remove on production
+                  return true;
 
                   // verify if stored password matches input password
                   if (password_verify($password, $hashedPassword)){

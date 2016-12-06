@@ -157,8 +157,9 @@ class Address_model extends CI_Model {
           $this->db->query("
           update address
           set add_active = 1
-          where acc_id = $acc_id and add_id = $add_id
-          ;");
+          where acc_id = $acc_id and add_id = $add_id;
+          ");
+
           $this->db->trans_complete();
 
           if ($this->db->trans_status() === FALSE)

@@ -29,10 +29,7 @@
                                   <a href="designer/gallery"><i class="fa fa-film"></i> Mis Galerías</a>
                               </li>
                               <li>
-                                  <a href="designer/designs"><i class="fa fa-picture-o"></i> Mis Diseños</a>
-                              </li>
-                              <li>
-                                  <a href="designer/products"><i class="fa fa-th"></i> Mis Productos</a>
+                                  <a href="designer/design"><i class="fa fa-picture-o"></i> Mis Diseños</a>
                               </li>
                               <li>
                                   <a href="designer/sales"><i class="fa fa-money"></i> Mis Ventas</a>
@@ -101,17 +98,25 @@
 
                                               </div>
                                           </div>
-                                          <a href="product/detail/<?php echo $design->des_id;?>">
-                                              <img src="<?php echo $design->des_file;?>" alt="" class="img-responsive">
+                                          <a href="design/detail/<?php echo $design->des_id;?>">
+                                              <img src="assets/img/item/<?php echo $design->des_id;?>/<?php echo $design->des_id;?>_tshirt_full_red.jpg" alt="" class="img-responsive">
                                           </a>
                                           <div class="text">
                                               <h3><a href="product/gallery/<?php echo $design->des_id;?>"><?php echo $design->des_name;?></a></h3>
+                                              <div class="text">
+                                                  <p class="price">$<?php echo $design->des_price-($design->des_price*$design->des_discount_percentage/100);?> <del>$<?php echo $design->des_price;?></del></p>
+                                              </div>
                                               <p class="buttons">
                                                   <a href="designer/edit_gallery" class="btn btn-default"><i class="fa fa-edit"></i>Editar</a>
                                                   <a href="designer/delete_gallery" class="btn btn-default"><i class="fa fa-trash-o"></i>Eliminar</a>
                                               </p>
                                           </div>
                                           <!-- /.text -->
+                                          <div class="ribbon sale">
+                                              <div class="theribbon">- <?php echo $design->des_discount_percentage?>%</div>
+                                              <div class="ribbon-background"></div>
+                                          </div>
+                                          <!-- /.ribbon -->
                                       </div>
                                       <!-- /.product -->
                                   </div>

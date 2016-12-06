@@ -6,10 +6,25 @@ class Login extends CI_Controller {
         {
           parent::__construct();
           $this->load->model('account/Account_model');
+          $this->load->model('product/Product_model');
         }
 
         public function index()
         {
+                if ($this->session->id){
+                  // data for the cart
+                  $cart_count = $this->Product_model->get_cart_items_count($this->session->id);
+
+                  $data['cart_count'] = "";
+                  if (isset($cart_count)){
+                    $data['cart_count'] = $cart_count->car_count;
+                  } else {
+                    $data['cart_count'] = 0;
+                  }
+                }else {
+                  $data['cart_count'] = 0;
+                }
+
 
                 // data for the navbar
                 $data['navbar_name'] = $this->session->name;

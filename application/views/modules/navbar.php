@@ -8,7 +8,7 @@ _________________________________________________________ -->
             <ul class="menu">
               <?php if (isset($navbar_name)) : ?>
                 <li>
-                  <a href="account"><?php echo $navbar_name; ?></a>
+                  <a href="account"><?php echo ucwords($navbar_name); ?></a>
                 </li>
                 <li>
                   <a href="logout">Salir</a>
@@ -24,7 +24,7 @@ _________________________________________________________ -->
                 </li>
               <?php endif; ?>
               <li>
-                <a href="designer/gallery">Diseñadores</a>
+                <a href="designer/">Diseñadores</a>
               </li>
             </ul>
         </div>
@@ -103,7 +103,7 @@ _________________________________________________________ -->
                         <li>
                             <div class="yamm-content">
                                 <div class="row">
-                                    <div class="col-sm-3">
+                                    <div class="col-sm-4">
                                         <h5>Más Comprados</h5>
                                         <ul>
                                             <li><a href="category">Poleras</a>
@@ -114,7 +114,7 @@ _________________________________________________________ -->
                                             </li>
                                         </ul>
                                     </div>
-                                    <div class="col-sm-3">
+                                    <div class="col-sm-4">
                                         <h5>Más Votados</h5>
                                         <ul>
                                             <li><a href="category">Poleras</a>
@@ -125,33 +125,7 @@ _________________________________________________________ -->
                                             </li>
                                         </ul>
                                     </div>
-                                    <div class="col-sm-3">
-                                        <h5>Accessories</h5>
-                                        <ul>
-                                            <li><a href="category">Trainers</a>
-                                            </li>
-                                            <li><a href="category">Sandals</a>
-                                            </li>
-                                            <li><a href="category">Hiking shoes</a>
-                                            </li>
-                                            <li><a href="category">Casual</a>
-                                            </li>
-                                            <li><a href="category">Hiking shoes</a>
-                                            </li>
-                                            <li><a href="category">Casual</a>
-                                            </li>
-                                        </ul>
-                                        <h5>Looks and trends</h5>
-                                        <ul>
-                                            <li><a href="category">Trainers</a>
-                                            </li>
-                                            <li><a href="category">Sandals</a>
-                                            </li>
-                                            <li><a href="category">Hiking shoes</a>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                    <div class="col-sm-3">
+                                    <div class="col-sm-4">
                                         <div class="banner">
                                             <a href="#">
                                                 <img src="assets/img/banner.jpg" class="img img-responsive" alt="">
@@ -170,85 +144,9 @@ _________________________________________________________ -->
                     </ul>
                 </li>
 
-                <li class="dropdown yamm-fw">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-delay="200">Ropa Friki <b class="caret"></b></a>
-                    <ul class="dropdown-menu">
-                        <li>
-                            <div class="yamm-content">
-                                <div class="row">
-                                    <div class="col-sm-3">
-                                        <h5>Clothing</h5>
-                                        <ul>
-                                            <li><a href="category">T-shirts</a>
-                                            </li>
-                                            <li><a href="category">Shirts</a>
-                                            </li>
-                                            <li><a href="category">Pants</a>
-                                            </li>
-                                            <li><a href="category">Accessories</a>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                    <div class="col-sm-3">
-                                        <h5>Shoes</h5>
-                                        <ul>
-                                            <li><a href="category">Trainers</a>
-                                            </li>
-                                            <li><a href="category">Sandals</a>
-                                            </li>
-                                            <li><a href="category">Hiking shoes</a>
-                                            </li>
-                                            <li><a href="category">Casual</a>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                    <div class="col-sm-3">
-                                        <h5>Accessories</h5>
-                                        <ul>
-                                            <li><a href="category">Trainers</a>
-                                            </li>
-                                            <li><a href="category">Sandals</a>
-                                            </li>
-                                            <li><a href="category">Hiking shoes</a>
-                                            </li>
-                                            <li><a href="category">Casual</a>
-                                            </li>
-                                            <li><a href="category">Hiking shoes</a>
-                                            </li>
-                                            <li><a href="category">Casual</a>
-                                            </li>
-                                        </ul>
-                                        <h5>Looks and trends</h5>
-                                        <ul>
-                                            <li><a href="category">Trainers</a>
-                                            </li>
-                                            <li><a href="category">Sandals</a>
-                                            </li>
-                                            <li><a href="category">Hiking shoes</a>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                    <div class="col-sm-3">
-                                        <div class="banner">
-                                            <a href="#">
-                                                <img src="assets/img/banner.jpg" class="img img-responsive" alt="">
-                                            </a>
-                                        </div>
-                                        <div class="banner">
-                                            <a href="#">
-                                                <img src="assets/img/banner2.jpg" class="img img-responsive" alt="">
-                                            </a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- /.yamm-content -->
-                        </li>
-                    </ul>
-                </li>
 
-                <li><a href="faq">F.A.Q</a>
-                </li>
+
+                
                     </ul>
                 </li>
             </ul>
@@ -259,7 +157,7 @@ _________________________________________________________ -->
         <div class="navbar-buttons">
 
             <div class="navbar-collapse collapse right" id="basket-overview">
-                <a href="basket" class="btn btn-primary navbar-btn"><i class="fa fa-shopping-cart"></i><span class="hidden-sm">3 items en carro</span></a>
+                <a href="basket" class="btn btn-primary navbar-btn"><i class="fa fa-shopping-cart"></i><span class="hidden-sm"><?php echo $cart_count;?> items en carro</span></a>
             </div>
             <!--/.nav-collapse -->
 

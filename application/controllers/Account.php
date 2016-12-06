@@ -8,13 +8,33 @@ class Account extends CI_Controller {
         parent::__construct();
         $this->load->model('account/Account_model');
         $this->load->model('product/Product_model');
+        $this->load->model('product/Purchase_model');
+        $this->load->model('product/Wish_model');
         $this->load->model('address/Address_model');
+      }
+
+      public function _get_cart_data()
+      {
+        $cart_count = "";
+        if ($this->session->id) {
+          $cart_count = $this->Product_model->get_cart_items_count($this->session->id);
+          if (isset($cart_count)){
+            return $cart_count->car_count;
+          } else {
+            return 0;
+          }
+        } else {
+          return 0;
+        }
       }
 
       public function index($address = false, $address_editable = false)
       {
         if($this->session->name)
         {
+
+            // data for the cart
+            $data['cart_count'] = $this->_get_cart_data();
 
             // data for the navbar
             $data['navbar_name'] = $this->session->name;
@@ -28,12 +48,15 @@ class Account extends CI_Controller {
             //load head
             $data['page_head'] = $this->load->view('modules/head', $data, TRUE);
 
-            // load active page
-            //$data['active_page'] = $this->load->view('modules/head', $data, TRUE);
-
             // load breadcrumb
             $data['breadcrumb_address'] = $this->session->name . ' - Mi Cuenta';
             $data['page_breadcrumb'] = $this->load->view('modules/breadcrumb', $data, TRUE);
+
+            // set active page form customer menu
+            $data['active_page'] = 'my_account';
+
+            //load customer menu
+            $data['page_customer_menu'] = $this->load->view('modules/customer_menu', $data, TRUE);
 
             // check if address editable variable sent
             if (!$address_editable ==  false){
@@ -90,6 +113,155 @@ class Account extends CI_Controller {
             // account is not authenticated. Therefore is redirected to Login
             redirect('login');
           }
+      }
+
+      public function my_wishlist()
+      {
+
+          if ($this->session->id){
+
+              // data for the cart
+              $data['cart_count'] = $this->_get_cart_data();
+
+              // data for the navbar
+              $data['navbar_name'] = $this->session->name;
+
+              // load the navbar with $data in $data['page_navbar']
+              $data['page_navbar'] = $this->load->view('modules/navbar', $data, TRUE);
+
+              // set title
+              $data['page_title'] = $this->session->name . ' - Mi Lista de Deseos';
+
+              // load head
+              $data['page_head'] = $this->load->view('modules/head', $data, TRUE);
+
+              // load breadcrumb
+              $data['breadcrumb_address'] = $this->session->name . ' - Mi Lista de Deseos';
+              $data['page_breadcrumb'] = $this->load->view('modules/breadcrumb', $data, TRUE);
+
+              // set active page form customer menu
+              $data['active_page'] = 'my_wishlist';
+
+              // load customer menu
+              $data['page_menu'] = $this->load->view('modules/customer_menu', $data, TRUE);
+
+              // load footer
+              $data['page_footer'] = $this->load->view('modules/footer', NULL, TRUE);
+
+              // load scripts
+              $data['page_scripts'] = $this->load->view('modules/scripts', $data, TRUE);
+
+              // load wishes
+              $data['wishlist'] = $this->Wish_model->get_wishlist($this->session->id);
+
+              //print_r($data['wishlist']);
+
+              // load the register view with all the other modules
+              $this->load->view('account/my_wishlist_view', $data);
+          } else {
+            redirect('login');
+          }
+      }
+
+      public function my_purchases()
+      {
+        if ($this->session->id){
+
+            // data for the cart
+            $data['cart_count'] = $this->_get_cart_data();
+
+            // data for the navbar
+            $data['navbar_name'] = $this->session->name;
+
+            // load the navbar with $data in $data['page_navbar']
+            $data['page_navbar'] = $this->load->view('modules/navbar', $data, TRUE);
+
+            // set title
+            $data['page_title'] = $this->session->name . ' - Mi Cuenta';
+
+            // load head
+            $data['page_head'] = $this->load->view('modules/head', $data, TRUE);
+
+            // load breadcrumb
+            $data['breadcrumb_address'] = $this->session->name . ' - Mi Cuenta';
+            $data['page_breadcrumb'] = $this->load->view('modules/breadcrumb', $data, TRUE);
+
+            // set active page form customer menu
+            $data['active_page'] = 'my_purchases';
+
+            // load customer menu
+            $data['page_customer_menu'] = $this->load->view('modules/customer_menu', $data, TRUE);
+
+            // load footer
+            $data['page_footer'] = $this->load->view('modules/footer', NULL, TRUE);
+
+            // load scripts
+            $data['page_scripts'] = $this->load->view('modules/scripts', $data, TRUE);
+
+            // load purchases
+            $data['purchases'] = $this->Purchase_model->get_purchases($this->session->id);
+
+            // load the register view with all the other modules
+            $this->load->view('account/my_purchases_view', $data);
+        } else {
+          redirect('404');
+        }
+      }
+
+      public function order($pur_id = false)
+      {
+        if ($this->session->id and !$pur_id == false){
+
+            // data for the cart
+            $data['cart_count'] = $this->_get_cart_data();
+
+            // data for the navbar
+            $data['navbar_name'] = $this->session->name;
+
+            // load the navbar with $data in $data['page_navbar']
+            $data['page_navbar'] = $this->load->view('modules/navbar', $data, TRUE);
+
+            // set title
+            $data['page_title'] = $this->session->name . ' - Mi Cuenta';
+
+            // load head
+            $data['page_head'] = $this->load->view('modules/head', $data, TRUE);
+
+            // load breadcrumb
+            $data['breadcrumb_address'] = $this->session->name . ' - Mi Cuenta';
+            $data['page_breadcrumb'] = $this->load->view('modules/breadcrumb', $data, TRUE);
+
+            // set active page form customer menu
+            $data['active_page'] = 'my_purchases';
+
+            // load customer menu
+            $data['page_customer_menu'] = $this->load->view('modules/customer_menu', $data, TRUE);
+
+            // load footer
+            $data['page_footer'] = $this->load->view('modules/footer', NULL, TRUE);
+
+            // load scripts
+            $data['page_scripts'] = $this->load->view('modules/scripts', $data, TRUE);
+
+            // load purchase info
+            $data['purchase'] = $this->Purchase_model->get_purchase($pur_id);
+
+            if (!isset($data['purchase'])){
+              redirect('404');
+            }
+
+            // load purchased items
+            $data['items'] = $this->Purchase_model->get_items_by_purchase($this->session->id, $pur_id);
+
+            if (!isset($data['items'])){
+              redirect('404');
+            }
+
+            // load the register view with all the other modules
+            $this->load->view('account/order_view', $data);
+        } else {
+          redirect('404');
+        }
       }
 
       public function edit_address($address = false)

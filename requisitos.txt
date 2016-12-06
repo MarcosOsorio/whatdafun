@@ -1,22 +1,24 @@
-Usuarios
-Agregar direcciones
-Editar Direcciones
+Usuarios x
+Agregar direcciones x
+Editar Direcciones x
 Eliminar Direcciones
 agregar productos a lista de deseos
 agregar productos a carro de compras
-comprar productos
-revisar envíos
+comprar productos x
+revisar envíos x
+revisar pedido x
 
 
 Diseñadores
+ver galerías x
 Crear galerías
 Editar galerías
 Eliminar galerías
+
 Crear diseños
-Editar diseños
+editar diseños
 Eliminar Diseños
 Revisar ingresos
-Subir Diseño
 
 Home
 Mostrar diseños más gustados
@@ -26,15 +28,17 @@ Mostrar galerías de un diseñador
 Mostrar colecciones por tema
 Mostrar colecciones por genero
 
-Diseño
-Mostrar detalle de diseño
+Diseño x
+Mostrar detalle de diseño x
 
 Admin
-Eliminar Usuarios
-Desactivar Usuarios
-Editar Usuarios
+Ver usuarios x
+Desactivar Usuarios x
+Contactar Usuario x
+
 actualizar estado de envíos
-Aprobar/desaprobar diseño de Diseñador
+Aprobar/desaprobar diseño
+
 Generar Reportes de ventas
 	Diseños más vendidos
 	Diseñadores más vendidos
@@ -45,14 +49,11 @@ Generar Reportes de ventas
   		mes
   		año
 
-	escoger color
-	escoger talla
-	escoger tipo de prenda
+Carro x
+Escoger dirección x
+Escoger medio de pago x
+Escoger método de envío x
 
-Carro
-Escoger dirección
-Escoger medio de pago
-Escoger método de envío
-
-Login
-Registro
+Login x
+Registro x
+logout x

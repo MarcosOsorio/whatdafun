@@ -40,5 +40,4 @@
     <script src="assets/js/respond.min.js"></script>
 
     <link rel="shortcut icon" href="assets/favicon.png">
-
 </head>

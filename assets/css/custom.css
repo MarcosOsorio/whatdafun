@@ -1,6 +1,5 @@
 /** Your theme modifications here **/
 
-
 @media screen and (max-width: 767px)
 {
   /* Small phones screens */
@@ -46,7 +45,7 @@
 
 .size-chooser
 {
-text-align: center; 
+text-align: center;
 }
 
 .color-chooser span.colour

@@ -25,6 +25,31 @@ $config = array(
                         )
                 )
         ),
+        'cart' => array(
+                array(
+                        'field' => 'quantity',
+                        'label' => 'cantidad',
+                        'rules' => 'required|numeric|greater_than_equal_to[0]',
+                        'errors' =>
+                        array
+                        (
+                            'required' => 'Debes ingresar una %s.',
+                            'greather_than_equal_to' => 'La %s debe ser positiva. Si ya no quieres el artículo, puedes quitarlo de tu carro.',
+                            'numeric' => 'La %s debe ser un número.'
+                        )
+                      ),
+                array(
+                        'field' => 'password',
+                        'label' => 'contraseña',
+                        'rules' => 'required|callback__password_check',
+                        'errors' =>
+                        array
+                        (
+                            'required' => 'Debes ingresar una %s.',
+                            '_password_check' => 'La %s es incorrecta.'
+                        )
+                )
+        ),
         'register' => array(
                 array(
                         'field' => 'email',
